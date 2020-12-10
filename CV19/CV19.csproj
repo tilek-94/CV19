@@ -14,8 +14,4 @@
     
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="NHibernate" Version="5.3.3" />
-  </ItemGroup>
-
 </Project>
