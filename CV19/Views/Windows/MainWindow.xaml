@@ -9,12 +9,43 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <Grid>
-        <Slider VerticalAlignment="Top"
-                HorizontalAlignment="Left"
-                Width="300"
-                Margin="10"
-                Value="{Binding Title}"/>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Выход"/>
+            </MenuItem>
+            <MenuItem Header="Помощ">
+            <MenuItem Header="О программе"/>
+            </MenuItem>
 
-    </Grid>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Text="1234"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Width="120" Height="14" Value="30"/>
+            </StatusBarItem>
+            
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Вкладка1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+                
+            </TabItem>
+            <TabItem Header="Вкладка2">
+                
+                
+            </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>
