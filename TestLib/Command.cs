@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace CV19.Infrastructure.Commands.Base
+namespace TestLib
 {
-   internal abstract class Command : ICommand
+    public abstract class Command : ICommand
     {
-        public event EventHandler CanExecuteChanged {
-            add => CommandManager.RequerySuggested += value;
+        public event EventHandler CanExecuteChanged
+        { 
+            add => CommandManager.RequerySuggested += value; 
             remove => CommandManager.RequerySuggested -= value;
         }
 
