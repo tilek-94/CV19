@@ -44,22 +44,24 @@
         <TabControl>
             <TabItem Header="Вкладка1">
                 <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-               <Ellipse Grid.Column="1" Grid.Row="0" Fill="Red" Stroke="Blue">
-                        <Ellipse.InputBindings>
-                            <MouseBinding 
-                                Command="{Binding CloseApplicatonCommand}"
-                                          MouseAction="LeftDoubleClick"                                        
-                                          />
-                        </Ellipse.InputBindings>
-                </Ellipse>
+                       </Grid.ColumnDefinitions>
+                    <GroupBox  Grid.Column="0" Header="Группы">
+                        <ListBox ItemsSource="{Binding Groups}"
+                                 DisplayMemberPath="Name"
+                                 SelectedItem="{Binding SelectedGroup}"
+                                 />
+
+                    </GroupBox>
+                    <GroupBox Grid.Column="1"  Header="{
+                        Binding SelectedGroup.Name,
+                        FallbackValue='Студенты',
+                        TargetNullValue='Группа не выбранна '}">
+                        <ListBox />
+
+                    </GroupBox>
                 </Grid>
             </TabItem>
             <TabItem Header="Вкладка2">
