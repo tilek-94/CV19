@@ -43,11 +43,12 @@ namespace CV19.ViewModels
         public MainWindowViewModel()
         {
             CloseApplicatonCommand = new LambdaCommand(OnCloseApplicationExecate,CanCloseApplicationExecat);
+           
             var student_index = 1;
             var students = Enumerable.Range(1, 10).Select(i=> new Student(){ 
             Name=$"Name {student_index}",
             Surname=$"Surname {student_index}",
-            Patronymic=$"Ptronimic {student_index}",
+            Patronymic=$"Ptronimic {student_index++}",
             Brithday=DateTime.Now,
              Rating=0
               }

@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:CV19.ViewModels"
+        xmlns:decanat="clr-namespace:CV19.Models.Decanat"
         xmlns:cmd="clr-namespace:CV19.Infrastructure.Commands"
         xmlns:l="clr-namespace:CV19"
         Title="{Binding Title}" Height="450" Width="800">
@@ -51,15 +52,32 @@
                     <GroupBox  Grid.Column="0" Header="Группы">
                         <ListBox ItemsSource="{Binding Groups}"
                                  DisplayMemberPath="Name"
+                                 SelectedIndex="0"
                                  SelectedItem="{Binding SelectedGroup}"
                                  />
 
                     </GroupBox>
                     <GroupBox Grid.Column="1"  Header="{
-                        Binding SelectedGroup.Name,
+                        Binding SelectedGroup.Name, 
                         FallbackValue='Студенты',
                         TargetNullValue='Группа не выбранна '}">
-                        <ListBox />
+                        <DataGrid ItemsSource="{Binding SelectedGroup.Students}" AutoGenerateColumns="False" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"/>
+                                <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Отчество" Binding="{Binding Patronymic}"/>
+                                <DataGridTextColumn Header="Рейтинг" Binding="{Binding Rating}"/>
+                                <!--<DataGridTextColumn Header="Дата рождения" Binding="{Binding Brithday}"/>-->
+                                <DataGridTemplateColumn Header="Дата Рождения">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate DataType="decanat:Student">
+                                            <DatePicker SelectedDate="{Binding Brithday}"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <!--<DataGridTextColumn Header="Группа" Binding="{Binding DataContext. }"/>-->
+                            </DataGrid.Columns>
+                        </DataGrid>
 
                     </GroupBox>
                 </Grid>
